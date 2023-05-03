@@ -9,8 +9,18 @@ namespace MP3_Spectrograph_Generator
             Console.WriteLine("Please enter the path to the MP3 file: ");
             string filePath = Console.ReadLine();
 
-            int bitrate = GetBitRate(filePath);
-            Console.WriteLine($"The file's bitrate is {bitrate / 1000} kbps");
+            try
+            {
+                int bitrate = GetBitRate(filePath);
+                Console.WriteLine($"The file's bitrate is {bitrate / 1000} kbps");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+            }
+           
+            Console.ReadKey();
+            
         }
 
         //using NAudio Mp3FileReader to read the frame's bitrate
